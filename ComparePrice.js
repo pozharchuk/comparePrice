@@ -1,4 +1,6 @@
-export class ComparePrices {
+
+/** Class ComparePrice */
+export  class ComparePrice {
 
     constructor () {
 
@@ -6,6 +8,11 @@ export class ComparePrices {
 
     }
 
+    /**
+     * @param {Array} arr
+     *
+     * @return {Array}
+     */
     normalizeData (arr) {
 
         if (!Array.isArray(arr)) return [];
@@ -28,7 +35,7 @@ export class ComparePrices {
                     newArr[indCount] = {
                         ...rest,
                         [supplierName]: price
-                    }
+                    };
                     indStore[rest.parentId] = indCount;
                     ++indCount;
                 }
@@ -39,6 +46,11 @@ export class ComparePrices {
         return newArr;
     }
 
+    /**
+     * @param {Array} arr
+     *
+     * @returns {Array}
+     */
     compare (arr) {
 
         if (!Array.isArray(arr)) return this._comparedPrices;
@@ -53,7 +65,7 @@ export class ComparePrices {
                 itemId: parentId,
                 best: '',
                 price: 0
-            }
+            };
 
             for (let key in rest) {
                 if(rest[key] > best.price) {
@@ -68,6 +80,9 @@ export class ComparePrices {
 
     }
 
+    /**
+     * @returns {Array}
+     */
     get comparedPrices () {
 
         return this._comparedPrices;
@@ -75,82 +90,86 @@ export class ComparePrices {
     }
 }
 
-const test = new ComparePrices();
 
+//code bellow for test
 
-const DataToNormalize = [
-    {
-        id: 123,
-        supplier: { id:1001, name:'Supplier A' },
-        items: [
-            {
-                parentId: 1,
-                quantity: 5,
-                price: 5,
-                desc: '1111'
-            },
-            {
-                parentId: 2,
-                quantity: 5,
-                price: 5,
-                desc: '2222'
-            },
-            {
-                parentId: 1,
-                quantity: 2,
-                price: 10,
-                desc: '1111'
-            },
-        ]
-    },
-    {
-        id: 124,
-        supplier: { id:1001, name:'Supplier B' },
-        items: [
-            {
-                parentId: 1,
-                quantity: 2,
-                price: 6,
-                desc: '1111'
-            },
-            {
-                parentId: 2,
-                quantity: 5,
-                price: 8,
-                desc: '2222'
-            },
-            {
-                parentId: 3,
-                quantity: 2,
-                price: 6,
-                desc: '1111'
-            },
-        ]
-    },
-    {
-        id: 124,
-        supplier: { id:1001, name:'Supplier C' },
-        items: [
-            {
-                parentId: 1,
-                quantity: 2,
-                price: 3,
-                desc: '1111'
-            },
-            {
-                parentId: 2,
-                quantity: 5,
-                price: 12,
-                desc: '2222'
-            },
-            {
-                parentId: 3,
-                quantity: 2,
-                price: 1,
-                desc: '1111'
-            },
-        ]
-    }
-]
-
-console.log(test.compare(DataToNormalize));
+// const Test = new ComparePrice();
+//
+//
+// const DataToNormalize = [
+//     {
+//         id: 123,
+//         supplier: { id:1001, name:'Supplier A' },
+//         items: [
+//             {
+//                 parentId: 1,
+//                 quantity: 5,
+//                 price: 5,
+//                 desc: '1111'
+//             },
+//             {
+//                 parentId: 2,
+//                 quantity: 5,
+//                 price: 5,
+//                 desc: '2222'
+//             },
+//             {
+//                 parentId: 1,
+//                 quantity: 2,
+//                 price: 10,
+//                 desc: '1111'
+//             },
+//         ]
+//     },
+//     {
+//         id: 124,
+//         supplier: { id:1001, name:'Supplier B' },
+//         items: [
+//             {
+//                 parentId: 1,
+//                 quantity: 2,
+//                 price: 6,
+//                 desc: '1111'
+//             },
+//             {
+//                 parentId: 2,
+//                 quantity: 5,
+//                 price: 8,
+//                 desc: '2222'
+//             },
+//             {
+//                 parentId: 3,
+//                 quantity: 2,
+//                 price: 6,
+//                 desc: '1111'
+//             },
+//         ]
+//     },
+//     {
+//         id: 124,
+//         supplier: { id:1001, name:'Supplier C' },
+//         items: [
+//             {
+//                 parentId: 1,
+//                 quantity: 2,
+//                 price: 3,
+//                 desc: '1111'
+//             },
+//             {
+//                 parentId: 2,
+//                 quantity: 5,
+//                 price: 12,
+//                 desc: '2222'
+//             },
+//             {
+//                 parentId: 3,
+//                 quantity: 2,
+//                 price: 1,
+//                 desc: '1111'
+//             },
+//         ]
+//     }
+// ];
+//
+// console.log(Test.compare(DataToNormalize));
+// console.log(Test.comparedPrices);
